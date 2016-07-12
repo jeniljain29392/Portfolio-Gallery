@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="galleryApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Porfolio Gallery</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/portfolio-item.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <section id="portfolio">
+        <div class="container">
+            <div class="bg" ng-controller="GalleryController" >
+                <div class="row">
+                    <div class="col-lg-12 text-center" style="color: #222; font-family: Arial Black;">
+                        <h1>PORTFOLIO</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">{{selected.title}}
+                            <small>{{selected.desc}}</small>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="viewwindow">
+                        <ul id="fullscroller" class="fullsizelist" ng-style="listposition" >
+                            <li ng-repeat="image in galleryData">
+                                <img id="fullsize" class="img-responsive large" ng-src="{{IMAGE_LOCATION+image.image}}" alt=""/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3>Project Description</h3>
+                    <p>{{selected.desc_long}}</p>
+                    <strong><p>Skills: {{selected.skills}}</p>
+                    <strong><a href="{{selected.id}}">Learn More</a></strong>
+                </div>
+                </div>
+                
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <h3 class="page-header">Projects</h3>
+                    </div>
+                    <div class="col-sm-4 portfolio-item" ng-repeat="image in galleryData">
+                        <div class="portfolio-link">
+                            <a ng-href="#portfolio" ng-click="scrollTo(image,$index)">
+                                <div class="caption">
+                                    <div class="caption-content">
+                                        <i class="fa fa-3x">{{image.title}}</i>
+                                    </div>
+                                </div>
+                                <img class="img-responsive portfolio-item" ng-src="{{IMAGE_LOCATION+image.image}}" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+    <!-- Vendor libraries -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
